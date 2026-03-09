@@ -8,7 +8,7 @@ import joblib
 app = Flask(__name__)
 from flask_cors import CORS
 
-# Restrict CORS to frontend only (for production, use specific domain)
+# Restrict CORS to frontend only
 CORS(app, origins=["http://localhost:5173", "http://127.0.0.1:5173"])
 
 # Load data
@@ -44,7 +44,6 @@ def recommend():
     if idx is not None:
         query_vector = tfidf_matrix[idx]
     else:
-        # Use the original input for TF-IDF to get better fuzzy matches
         query_vector = tfidf.transform([input_text])
 
     # Always run KNN neighbors, fallback to top 10 anyway
@@ -53,8 +52,8 @@ def recommend():
     
     # Clean up results - remove internal fields
     for movie in results:
-        movie.pop('soup', None)  # Remove the soup field used for vectorization
-        movie.pop('movieId', None)  # Optional: remove if not needed by frontend
+        movie.pop('soup', None)
+        movie.pop('movieId', None)
     
     return jsonify(results)
 

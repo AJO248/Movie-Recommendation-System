@@ -4,11 +4,11 @@ import './App.css';
 
 function App() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);  // Always an array
+  const [results, setResults] = useState([]);  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [searched, setSearched] = useState(false); // Track if a search was made
-
+  const [searched, setSearched] = useState(false);
+  
   const handleSearch = async () => {
     if (!query.trim()) return;
     setLoading(true);
