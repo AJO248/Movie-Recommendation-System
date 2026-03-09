@@ -1,0 +1,8 @@
+{
+  "_comment": "This file contains optional CSS utilities. The main frontend is in the ./recommender folder.",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.5",
+    "tailwindcss": "^4.1.10"
+  }
+}
